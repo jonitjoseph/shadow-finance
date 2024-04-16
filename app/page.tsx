@@ -1,7 +1,6 @@
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
 import Link from "next/link"
+import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { Trade } from "@/components/trade"
 
 export default function Home() {
   return (
@@ -22,17 +21,15 @@ export default function Home() {
       </header>
       <main className="m-4 mx-16 flex-1">
         <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-          <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+          <div className="container flex max-w-[64rem] flex-col items-center gap-4">
             <h1 className="text-3xl font-medium sm:text-5xl md:text-6xl lg:text-7xl">
               Shadow Finance
             </h1>
-            <p className="max-w-[42rem] leading-normal text-stone-500 sm:text-xl sm:leading-8">
+            <p className="max-w-[42rem] text-center leading-normal text-stone-500 sm:text-xl sm:leading-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-            <div className="space-x-4 pt-4">
-              <Link href="#" className={cn(buttonVariants({ size: "lg" }))}>
-                Get Started
-              </Link>
+            <div className="min-w-[300px] max-w-[300px] space-x-4 pt-12 md:min-w-[400px] md:max-w-[400px]">
+              <Trade />
             </div>
           </div>
         </section>
