@@ -4,6 +4,7 @@ import fs from 'fs'
 export const networkNameToUniRouter = (name: string) => {
   switch (name) {
     case 'mainnet': return '0xE592427A0AEce92De3Edee1F18E0157C05861564'
+    case 'sepolia': return '0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E'
     case 'rinkebyArbitrum': return '0xE592427A0AEce92De3Edee1F18E0157C05861564'
     case 'goerli': return '0x833A158dA5ceBc44901211427E9Df936023EC0d3'
     default: return undefined
@@ -13,6 +14,7 @@ export const networkNameToUniRouter = (name: string) => {
 export const networkNameToUniFactory = (name: string) => {
   switch (name) {
     case 'mainnet': return '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+    case 'sepolia': return '0x0227628f3F023bb0B980b67D528571c95c6DaC1c'
     case 'rinkebyArbitrum': return '0x1F98431c8aD98523631AE4a59f267346ea31F984'
     case 'goerli': return '0x55C0ceF3cc64F511C34b18c720bCf38feC6C6fFa'
     default: return undefined
@@ -23,6 +25,7 @@ export const networkNameToUniFactory = (name: string) => {
 export const networkNameToUniQuoter = (name: string) => {
   switch (name) {
     case 'mainnet': return '0xC8d3a4e6BB4952E3658CCA5081c358e6935Efa43'
+    case 'sepolia': return '0xEd1f6473345F45b75F8179591dd5bA1888cf2FB3'
     case 'rinkebyArbitrum': return undefined
     case 'goerli': return '0x759442726c06F7938cd2cB63aC9Ae373Dc1dEcf6'
     default: return undefined
@@ -32,6 +35,7 @@ export const networkNameToUniQuoter = (name: string) => {
 export const networkNameToPositionManager = (name: string) => {
   switch (name) {
     case 'mainnet': return '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+    case 'sepolia': return '0x1238536071E1c677A632429e3655c799b22cDA52'
     case 'rinkebyArbitrum': return '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
     case 'goerli': return '0x24a66308bab3BEbC2821480adA395BF1C4ff8Bf2'
     default: return undefined
@@ -41,6 +45,7 @@ export const networkNameToPositionManager = (name: string) => {
 export const networkNameToUSDC = (name: string) => {
   switch (name) {
     case 'mainnet': return '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
+    case 'sepolia': return '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238'
     case 'ropsten': return '0x27415c30d8c87437becbd4f98474f26e712047f4'
     case 'goerli': return '0x306bf03b689f7d7e5e9D3aAC87a068F16AFF9482'
     default: return undefined
@@ -51,6 +56,7 @@ export const networkNameToUSDC = (name: string) => {
 export const networkNameToWeth = (name: string) => {
   switch (name) {
     case 'mainnet': return '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    case 'sepolia': return '0xfff9976782d46cc05630d1f6ebab18b2324d6b14'
     case 'ropsten': return '0xc778417e063141139fce010982780140aa0cd5ab'
     case 'rinkebyArbitrum': return '0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681'
     case 'goerli': return '0x083fd3D47eC8DC56b572321bc4dA8b26f7E82103'
@@ -175,6 +181,7 @@ export const getCrab = (networkName: string) => {
  */
 export const hasUniswapDeployments = (networkName: string) => {
   if (networkName === 'mainnet') return true
+  if (networkName === 'sepolia') return true
   if (networkName === 'rinkebyArbitrum') return true
   if (networkName === 'ropsten') return true
   if (networkName === 'goerli') return true   // our own uni deployment on goerli with OpynWETH9

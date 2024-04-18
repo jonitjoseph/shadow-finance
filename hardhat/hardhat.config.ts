@@ -25,6 +25,7 @@ import './tasks/increaseSlot'
 // Load env variables
 dotenv.config()
 const InfuraKey = process.env.INFURA_KEY
+const API_KEY = process.env.API_KEY
 const fs = require("fs");
 
 /*
@@ -90,6 +91,10 @@ const config: HardhatUserConfig = {
         notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
         (you can put in a mnemonic here to set the deployer locally)
       */
+    },
+    sepolia: {
+      url: `https://eth-sepolia.g.alchemy.com/v2/${API_KEY}`,
+      accounts,
     },
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${InfuraKey}`, // <---- YOUR INFURA ID! (or it won't work)
