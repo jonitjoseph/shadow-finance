@@ -22,7 +22,7 @@ import { Address } from "viem"
 import { shortHelperABI } from "../abi/shortHelper"
 
 export function Trade() {
-  const { isConnected } = useAccount()
+  const { address, isConnected } = useAccount()
   const { data: hash, error, isPending, writeContract } = useWriteContract()
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
@@ -32,14 +32,14 @@ export function Trade() {
   const vaultId = 0 as unknown as bigint
   const uniNftId = 0 as unknown as bigint
   const shortHelperAddress =
-    "0x0000000000000000000000000000000000000000" as Address
+    "0x8fB7677D23E3c994248b213D9a59087659E8Da4C" as Address
 
   const exactInputParams = {
-    tokenIn: "0x0000000000000000000000000000000000000000" as Address, // Address of wPowerPerp
-    tokenOut: "0x0000000000000000000000000000000000000000" as Address, // Address of WETH
+    tokenIn: "0xBa1b78Ee922E4733454876B9D215A8a8ae4D7e66" as Address, // Address of wPowerPerp
+    tokenOut: "0xfff9976782d46cc05630d1f6ebab18b2324d6b14" as Address, // Address of WETH
     fee: 3000 as number, // Fee (in ppm)
-    recipient: "0x0000000000000000000000000000000000000000" as Address, // Address of recipient (this contract address)
-    deadline: 1714435200 as unknown as bigint, // Deadline timestamp
+    recipient: address as Address, // Address of recipient (this contract address)
+    deadline: 1717200000 as unknown as bigint, // Deadline timestamp
     amountIn: 1000 as unknown as bigint, // Amount of wPowerPerp to sell
     amountOutMinimum: 0 as unknown as bigint, // Minimum amount of WETH to receive
     sqrtPriceLimitX96: 0 as unknown as bigint, // sqrtPriceLimitX96
@@ -96,34 +96,46 @@ export function Trade() {
         )}
         {error && (
           <CardContent>
-            <p className="text-sm font-medium leading-none">Error</p>
-            <p className="truncate text-wrap text-sm text-muted-foreground hover:text-clip">
-              Error: {(error as BaseError).shortMessage || error.message}
-            </p>
+            <div className="rounded-md border border-red-600 p-4">
+              <p className="pb-1 text-base font-medium leading-none">Error</p>
+              <p className="truncate text-wrap text-sm text-muted-foreground hover:text-clip">
+                Error: {(error as BaseError).shortMessage || error.message}
+              </p>
+            </div>
           </CardContent>
         )}
         {hash && (
           <CardContent>
-            <p className="text-sm font-medium leading-none">Executing</p>
-            <p className="text-sm text-muted-foreground">
-              Transaction Hash: {hash}
-            </p>
+            <div className="rounded-md border border-green-600 p-4">
+              <p className="pb-1 text-base font-medium leading-none">
+                Executing
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Transaction Hash: {hash}
+              </p>
+            </div>
           </CardContent>
         )}
         {isConfirming && (
           <CardContent>
-            <p className="text-sm font-medium leading-none">Executing</p>
-            <p className="text-sm text-muted-foreground">
-              Waiting for confirmation...
-            </p>
+            <div className="rounded-md border border-green-600 p-4">
+              <p className="pb-1 text-base font-medium leading-none">
+                Executing
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Waiting for confirmation...
+              </p>
+            </div>
           </CardContent>
         )}
         {isConfirmed && (
           <CardContent>
-            <p className="text-sm font-medium leading-none">Success</p>
-            <p className="text-sm text-muted-foreground">
-              Transaction confirmed.
-            </p>
+            <div className="rounded-md border border-green-600 p-4">
+              <p className="pb-1 text-base font-medium leading-none">Success</p>
+              <p className="text-sm text-muted-foreground">
+                Transaction confirmed.
+              </p>
+            </div>
           </CardContent>
         )}
       </Card>
